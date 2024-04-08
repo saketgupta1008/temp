@@ -1,0 +1,182 @@
+text	intent
+normality test	test_stats
+anderson-darling test	test_stats
+skewness and kurtosis test	test_stats
+z test	test_stats
+t test	test_stats
+adfuller	test_stats
+kpss	test_stats
+chi-square test	test_stats
+anova	test_stats
+kolmogorov-smirnov test	test_stats
+fisher's f-test	test_stats
+binomial	test_stats
+paired sample t-test	test_stats
+kruskal-wallis	test_stats
+abod	detect_anomaly
+iqr	detect_anomaly
+zscore	detect_anomaly
+copula	detect_anomaly
+dbscan	detect_anomaly
+isolation forest	detect_anomaly
+bar chart	plot_graph
+histogram	plot_graph
+boxplot	plot_graph
+line plot	plot_graph
+pie chart	plot_graph
+error bar chart	plot_graph
+error scatter chart	plot_graph
+line polar chart	plot_graph
+bubble chart	plot_graph
+heatmap	plot_graph
+area chart	plot_graph
+scatter chart	plot_graph
+Can you analyze the distribution of normality test?	test_stats
+Please test the hypothesis for normality test?	test_stats
+What's the p-value for normality test?	test_stats
+Is there a significant difference in normality test?	test_stats
+Can you analyze the distribution of anderson-darling test?	test_stats
+Please test the hypothesis for anderson-darling test?	test_stats
+What's the p-value for anderson-darling test?	test_stats
+Is there a significant difference in anderson-darling test?	test_stats
+Can you analyze the distribution of skewness and kurtosis test?	test_stats
+Please test the hypothesis for skewness and kurtosis test?	test_stats
+What's the p-value for skewness and kurtosis test?	test_stats
+Is there a significant difference in skewness and kurtosis test?	test_stats
+Can you analyze the distribution of z test?	test_stats
+Please test the hypothesis for z test?	test_stats
+What's the p-value for z test?	test_stats
+Is there a significant difference in z test?	test_stats
+Can you analyze the distribution of t test?	test_stats
+Please test the hypothesis for t test?	test_stats
+What's the p-value for t test?	test_stats
+Is there a significant difference in t test?	test_stats
+Can you analyze the distribution of adfuller?	test_stats
+Please test the hypothesis for adfuller?	test_stats
+What's the p-value for adfuller?	test_stats
+Is there a significant difference in adfuller?	test_stats
+Can you analyze the distribution of kpss?	test_stats
+Please test the hypothesis for kpss?	test_stats
+What's the p-value for kpss?	test_stats
+Is there a significant difference in kpss?	test_stats
+Can you analyze the distribution of chi-square test?	test_stats
+Please test the hypothesis for chi-square test?	test_stats
+What's the p-value for chi-square test?	test_stats
+Is there a significant difference in chi-square test?	test_stats
+Can you analyze the distribution of anova?	test_stats
+Please test the hypothesis for anova?	test_stats
+What's the p-value for anova?	test_stats
+Is there a significant difference in anova?	test_stats
+Can you analyze the distribution of kolmogorov-smirnov test?	test_stats
+Please test the hypothesis for kolmogorov-smirnov test?	test_stats
+What's the p-value for kolmogorov-smirnov test?	test_stats
+Is there a significant difference in kolmogorov-smirnov test?	test_stats
+Can you analyze the distribution of fisher's f-test?	test_stats
+Please test the hypothesis for fisher's f-test?	test_stats
+What's the p-value for fisher's f-test?	test_stats
+Is there a significant difference in fisher's f-test?	test_stats
+Can you analyze the distribution of binomial?	test_stats
+Please test the hypothesis for binomial?	test_stats
+What's the p-value for binomial?	test_stats
+Is there a significant difference in binomial?	test_stats
+Can you analyze the distribution of paired sample t-test?	test_stats
+Please test the hypothesis for paired sample t-test?	test_stats
+What's the p-value for paired sample t-test?	test_stats
+Is there a significant difference in paired sample t-test?	test_stats
+Can you analyze the distribution of kruskal-wallis?	test_stats
+Please test the hypothesis for kruskal-wallis?	test_stats
+What's the p-value for kruskal-wallis?	test_stats
+Is there a significant difference in kruskal-wallis?	test_stats
+Identify outliers in abod?	detect_anomaly
+Detect unusual patterns in abod?	detect_anomaly
+Can you find anomalies in abod?	detect_anomaly
+Highlight anomalies for abod?	detect_anomaly
+Identify outliers in iqr?	detect_anomaly
+Detect unusual patterns in iqr?	detect_anomaly
+Can you find anomalies in iqr?	detect_anomaly
+Highlight anomalies for iqr?	detect_anomaly
+Identify outliers in zscore?	detect_anomaly
+Detect unusual patterns in zscore?	detect_anomaly
+Can you find anomalies in zscore?	detect_anomaly
+Highlight anomalies for zscore?	detect_anomaly
+Identify outliers in copula?	detect_anomaly
+Detect unusual patterns in copula?	detect_anomaly
+Can you find anomalies in copula?	detect_anomaly
+Highlight anomalies for copula?	detect_anomaly
+Identify outliers in dbscan?	detect_anomaly
+Detect unusual patterns in dbscan?	detect_anomaly
+Can you find anomalies in dbscan?	detect_anomaly
+Highlight anomalies for dbscan?	detect_anomaly
+Identify outliers in isolation forest?	detect_anomaly
+Detect unusual patterns in isolation forest?	detect_anomaly
+Can you find anomalies in isolation forest?	detect_anomaly
+Highlight anomalies for isolation forest?	detect_anomaly
+Can you display data for bar chart?	plot_graph
+Show a bar chart?	plot_graph
+Generate a graph for bar chart?	plot_graph
+Visualize the bar chart?	plot_graph
+Create a chart showing bar chart?	plot_graph
+Can you display data for histogram?	plot_graph
+Show a histogram?	plot_graph
+Generate a graph for histogram?	plot_graph
+Visualize the histogram?	plot_graph
+Create a chart showing histogram?	plot_graph
+Can you display data for boxplot?	plot_graph
+Show a boxplot?	plot_graph
+Generate a graph for boxplot?	plot_graph
+Visualize the boxplot?	plot_graph
+Create a chart showing boxplot?	plot_graph
+Can you display data for line plot?	plot_graph
+Show a line plot?	plot_graph
+Generate a graph for line plot?	plot_graph
+Visualize the line plot?	plot_graph
+Create a chart showing line plot?	plot_graph
+Can you display data for pie chart?	plot_graph
+Show a pie chart?	plot_graph
+Generate a graph for pie chart?	plot_graph
+Visualize the pie chart?	plot_graph
+Create a chart showing pie chart?	plot_graph
+Can you display data for error bar chart?	plot_graph
+Show a error bar chart?	plot_graph
+Generate a graph for error bar chart?	plot_graph
+Visualize the error bar chart?	plot_graph
+Create a chart showing error bar chart?	plot_graph
+Can you display data for error scatter chart?	plot_graph
+Show a error scatter chart?	plot_graph
+Generate a graph for error scatter chart?	plot_graph
+Visualize the error scatter chart?	plot_graph
+Create a chart showing error scatter chart?	plot_graph
+Can you display data for line polar chart?	plot_graph
+Show a line polar chart?	plot_graph
+Generate a graph for line polar chart?	plot_graph
+Visualize the line polar chart?	plot_graph
+Create a chart showing line polar chart?	plot_graph
+Can you display data for bubble chart?	plot_graph
+Show a bubble chart?	plot_graph
+Generate a graph for bubble chart?	plot_graph
+Visualize the bubble chart?	plot_graph
+Create a chart showing bubble chart?	plot_graph
+Can you display data for heatmap?	plot_graph
+Show a heatmap?	plot_graph
+Generate a graph for heatmap?	plot_graph
+Visualize the heatmap?	plot_graph
+Create a chart showing heatmap?	plot_graph
+Can you display data for area chart?	plot_graph
+Show a area chart?	plot_graph
+Generate a graph for area chart?	plot_graph
+Visualize the area chart?	plot_graph
+Create a chart showing area chart?	plot_graph
+Can you display data for scatter chart?	plot_graph
+Show a scatter chart?	plot_graph
+Generate a graph for scatter chart?	plot_graph
+Visualize the scatter chart?	plot_graph
+Create a chart showing scatter chart?	plot_graph
+Can you determine if the data follows a normal distribution?	test_stats
+Is there a statistical difference between these two groups?	test_stats
+What statistical test can be used to analyze this data?	test_stats
+Identify any unusual patterns in the following data.	detect_anomaly
+Are there any outliers present in this dataset?	detect_anomaly
+How can we detect anomalies in this time series data?	detect_anomaly
+Can you create a visualization to show the trend over time?	plot_graph
+What's the best way to compare these categories visually?	plot_graph
+How can I visualize the distribution of this variable?	plot_graph
