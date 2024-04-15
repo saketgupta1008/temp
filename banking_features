@@ -1,0 +1,19 @@
+banking_features = [
+    "customer_age", "customer_income", "account_balance", "length_of_relationship_with_bank", "transaction_history",
+    "credit_score", "number_of_accounts", "loan_amounts_and_types", "payment_history", "employment_status",
+    "residential_status", "marital_status", "educational_background", "investment_holdings", "digital_engagement_level",
+    "overdraft_frequency", "savings_account_usage", "debit_and_credit_card_usage", "ATM_withdrawals",
+    "direct_deposit_information", "geographic_location", "insurance_policies", "customer_feedback_and_satisfaction_levels",
+    "mobile_banking_usage", "social_media_activity", "fraud_reports", "loan_default_rates", "website_interaction_patterns",
+    "call_center_interaction_frequencies", "product_portfolio_size",
+    "transaction_frequency", "average_transaction_amount", "credit_utilization_ratio", "debt_to_income_ratio",
+    "loan_to_value_ratio", "credit_card_utilization", "average_account_age", "customer_segmentation", "churn_rate",
+    "cross_selling_ratio", "average_revenue_per_user", "customer_lifetime_value", "channel_preference",
+    "net_promoter_score", "regulatory_compliance", "credit_card_rewards", "fee_structure", "financial_literacy_level",
+    "investment_preferences", "financial_goals", "customer_referral_source", "credit_monitoring_services",
+    "transaction_categorization", "financial_wellness_programs", "loan_application_history", "demographic_trends",
+    "customer_complaints", "market_research_insights", "competitor_comparison", "ESG_criteria",
+    "country_code", "customer_address",
+    "online_usage", "account_tenure", "online_indicator", "merchant_country", "card_type",
+    "loan_type", "loan_repayment_indicator", "transaction_destination_currency_type"
+]
