@@ -1,0 +1,39 @@
+import fitz  # PyMuPDF
+
+def extract_pdf_contents(pdf_path):
+    # Open the provided PDF file
+    doc = fitz.open(pdf_path)
+    
+    # Initialize storage for text and images
+    text = ""
+    images = []
+    tables = []  # This example does not parse tables as actual tables.
+    
+    for page in doc:
+        # Extract text
+        text += page.get_text()
+        
+        # Extract images
+        image_list = page.get_images(full=True)
+        for img_index, img in enumerate(image_list):
+            xref = img[0]  # xref number
+            base_image = doc.extract_image(xref)
+            image_bytes = base_image["image"]
+            image_ext = base_image["ext"]
+            image_filename = f"image_{page.number}_{img_index}.{image_ext}"
+            with open(image_filename, "wb") as img_file:
+                img_file.write(image_bytes)
+            images.append(image_filename)
+        
+        # Here you would ideally have some logic to detect and parse tables.
+        # This can be highly specific to the document layout and structure.
+
+    doc.close()
+    return text, images, tables
+
+# Use the function
+pdf_path = 'path_to_your_pdf.pdf'
+text_content, extracted_images, extracted_tables = extract_pdf_contents(pdf_path)
+print("Extracted Text:", text_content)
+print("Extracted Images:", extracted_images)
+print("Extracted Tables:", extracted_tables)  # Tables would require custom logic.
