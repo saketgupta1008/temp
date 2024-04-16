@@ -23,3 +23,18 @@ if tables:
     print(tables[0])
 else:
     print("No tables found.")
+
+import pandas as pd
+
+# Assuming tables is a list of DataFrame objects extracted from pages
+def merge_tables(tables):
+    if not tables:
+        return None
+    merged_table = tables[0]
+    for table in tables[1:]:
+        if (table.columns == merged_table.columns).all():  # Checks if the headers match
+            merged_table = pd.concat([merged_table, table], ignore_index=True)
+    return merged_table
+
+# Use the function
+merged_result = merge_tables(tables)
