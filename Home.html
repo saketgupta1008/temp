@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Page</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+        <button id="toggleNavbar">☰</button>
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+        <div class="header-right">
+            
+            <div class="header-right">
+                <button onclick="logout()">Logout</button>
+                <button onclick="help()">Help</button>
+            </div>
+        </div>
+    </header>
+    <aside id="navbar">
+        <div class="nav-links">
+            <a href="#" onclick="download()">Download</a>
+            <a href="#" onclick="reset()">Reset</a>
+            <a href="#" onclick="clearText()">Clear Text</a>
+        </div>
+        
+    </aside>
+    <main>
+        
+    </main>
+    <footer>
+        
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>
