@@ -1,0 +1,334 @@
+/* Basic reset for margins and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--main-bg-color);
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+/* Light Mode Styles */
+:root {
+    --main-bg-color: #ecfbff; /* Light mode background */
+    --main-text-color: #000000; /* Black text for light mode */
+    --header-footer-bg-color: #e0f7fd; /* Light mode header and footer */
+    --header-second-bg-color: #00AFE9;
+    --sidebar-bg-color: #ecfbff; /* Light mode sidebar */
+    --sidebar-text-color: #000000; /* Black text for sidebar in light mode */
+    --button-bg-color: #00AFE9; /* Light mode buttons */
+    --button-text-color: #ffffff; /* Light mode button text */
+    --button-hover-bg-color: #008CBA; /* Light mode button hover */
+    --input-bg-color: #ffffff; /* Light mode input background */
+    --input-border-color: #00AFE9; /* Light mode input border */
+    --input-border-focus-color: #008CBA;
+    --input-text-color: #000000;
+    --navbar-logo-color: #000000;
+    --help-bg-color: #ecfbff;
+    --navbar-bg-color: #ecfbff;
+    --help-icon-color: #00AFE9;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    --main-bg-color: #121212; /* Slightly off-black background for better readability */
+    --main-text-color: #ffffff; /* White text for dark mode */
+    --header-footer-bg-color: #000000; /* True black for header and footer in dark mode */
+    --header-second-bg-color: #7a8286;
+    --sidebar-bg-color: #050505; /* True black for the sidebar in dark mode */
+    --button-bg-color: #333333; /* Dark gray for buttons in dark mode */
+    --button-text-color: #ffffff; /* White text for buttons in dark mode */
+    --button-hover-bg-color: #272525; /* Slightly lighter gray for button hover in dark mode */
+    --input-border-color: #555; /* Dark border for input fields in dark mode */
+    --input-border-focus-color: #121212;
+    --input-bg-color: #121212; /* Matching the dark mode background color */
+    --sidebar-text-color: #b4b4b4;
+    --input-text-color: #ffffff;
+    --navbar-logo-color: #ffffff;
+    --navbar-bg-color: #000000;
+    --help-bg-color: #000000;
+    --help-icon-color: #ffffff;
+    background-color: var(--main-bg-color); /* Apply the off-dark background */
+}
+
+/* Header styling */
+
+
+#helpButton {
+    background: transparent; /* Ensures no background */
+    border: none; /* No border */
+    
+}
+
+#helpButton:hover {
+    background-color: transparent; /* Keeps background transparent on hover */
+    font-size: 26.25px;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+    
+}
+
+.header-right button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 15px; /* Rounded corners for buttons */
+    cursor: pointer;
+    transition: none;
+    background-color: var(--help-bg-color);
+    color: var(--help-icon-color);
+    font-size: 25px;
+}
+.header-left {
+    display: flex;
+    gap: 30px;
+    
+}
+
+.toggle-container{
+    display: flex;
+    align-items: center;
+}
+/* Sidebar navigation */
+aside {
+    width: 200px;
+    background-color: var(--sidebar-bg-color);
+    height: calc(100vh - 70px);
+    position: fixed;
+    left: -200px;
+    top: 70px;
+    transition: left 0.3s, background-color 0.3s;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    box-shadow: 4px 0 8px 0 rgba(0, 0, 0, 0.2); /* Right shadowing effect */
+    z-index: 500; /* Ensure it's above most elements but below the fixed header/footer */
+}
+
+aside a {
+    display: block;
+    color: var(--sidebar-text-color);
+    padding: 8px 12px;
+    text-decoration: none;
+    margin: 5px 0;
+    background-color: transparent;
+    transition: background-color 0.2s;
+    border-radius: 15px; /* Rounded corners for sidebar links */
+}
+
+aside a:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+/* Main content area */
+main {
+    margin-left: 220px; /* Adjusted to prevent text hiding behind the sidebar */
+    padding-top: 80px; /* Adjusted for header height */ 
+    /* height:1000px; */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Footer styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--header-footer-bg-color);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    padding-left: 200px;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2); /* Upward shadowing effect */
+    z-index: 1000; /* Higher than sidebar to keep it visually on top */
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--button-bg-color);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px; /* Rounded corners for buttons */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+
+/* Styling for the toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* Reduced width from 60px */
+    height: 22px; /* Reduced height from 34px */
+    vertical-align: middle; /* Aligns the switch vertically with adjacent text/buttons */
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #121212;
+    transition: .4s;
+    border-radius: 22px; /* Adjusted to match new height */
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Reduced height */
+    width: 18px; /* Reduced width */
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--header-footer-bg-color); /* Default knob color */
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #ecfbff;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(18px); /* Adjust translation to match new width */
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #ecfbff;
+  }
+#toggleNavbar{
+    background-color: transparent;   
+    color: var(--navbar-logo-color);
+}
+
+#toggleNavbar:hover{
+    font-weight: bold;
+}
+
+#headerLogo {
+    height: 50px; /* Adjust based on your header's size */
+    width: auto; /* Maintains aspect ratio */
+    /*margin-right: 5px; /* Space between logo and next element */
+    vertical-align: middle; /* Aligns vertically if your header uses inline or flexbox layout */
+    padding-left: 50px;
+}
+#staaslogo{
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: #00aeef ;
+    padding: 0px 0px 4px 0px;;
+    text-decoration: none;
+    margin: 5px 0;
+    background-color: transparent;
+    transition: background-color 0.2s;
+    border-radius: 15px; /* Rounded corners for sidebar links */
+}
+
+
+.primary-header {
+    display: flex;
+    background-color: var(--header-footer-bg-color);
+    color: white;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    
+    justify-content: space-between;
+    top: 0;
+    align-items: center;  /* Aligns items vertically in the center */
+    z-index: 1000;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadowing effect */
+}
+
+.secondary-header {
+    display: flex;
+    position: fixed;
+    width: 40%;
+    align-items: center; 
+    /* background-color: #074f80; */
+    background-color: var(--header-second-bg-color) ;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 74px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 15px;
+    justify-content: space-evenly; /* Distribute buttons evenly */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-header button {
+    padding: 5px 15px;
+    border: none;
+    font-family: monospace;
+    font-size: large;
+    color: var(--main-bg-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.secondary-header button:hover {
+    background-color: #ccc;
+}
+.search-box input[type="text"] {
+    padding: 15px 20px; /* Increased padding for larger height */
+    padding-right: 50px;
+    margin-right: 20px;
+    flex-grow: 1; /* Allows the input to take up all available space */
+    width: 90%; /* Increased width for the search bar */
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-bg-color); /* Use the variable for background color */
+    border-radius: 15px; /* Rounded corners for the search bar */
+    transition: box-shadow 0.3s ease;
+    color: var(--input-text-color);
+    
+
+} 
+.search-box input[type="text"]:focus{
+    box-shadow: 0 0 5px var(--input-border-focus-color);
+    border: 1px solid var(--input-border-color);
+    outline-color: var(--input-border-focus-color);
+}
+
+
+   
+.search-box {
+    width: 60%; /* Adjust width as needed */
+    display: flex; /* Establishes a flex container */
+    align-items: center; /* Vertically centers the flex items */
+    border-radius: 15px; /* Rounded corners for the search bar */
+}
+
+
+.search-box .send-icon {
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the icon */
+    color: #ccc; /* Sets the color of the icon */
+    padding-right: 20px;
+    margin-left: -52px;
+}
+
+
