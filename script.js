@@ -92,19 +92,28 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
     const secondaryHeader = document.querySelector('.secondary-header');
     const toggleButton = document.getElementById('toggleSecondaryHeader');
+    const icon = toggleButton.querySelector('i'); // Get the icon
 
-    // Check if the stored state in localStorage exists and apply it
+    // Check if the secondary header should start as collapsed
     const isCollapsed = localStorage.getItem('secondaryHeaderCollapsed') === 'true';
+    secondaryHeader.classList.toggle('collapsed', isCollapsed); // Apply initial state
     if (isCollapsed) {
-        secondaryHeader.classList.add('collapsed');
+        icon.style.transform = 'rotate(180deg)';
     }
 
     toggleButton.addEventListener('click', function() {
         secondaryHeader.classList.toggle('collapsed');
-        // Update the state in localStorage
+        // Rotate the icon based on state
+        if (secondaryHeader.classList.contains('collapsed')) {
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            icon.style.transform = 'rotate(0deg)';
+        }
+        // Save the state
         localStorage.setItem('secondaryHeaderCollapsed', secondaryHeader.classList.contains('collapsed'));
     });
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
