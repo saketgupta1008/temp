@@ -144,6 +144,17 @@ main {
     min-height: 100vh;
     box-sizing: border-box;
 }
+main {
+    margin-left: 220px; /* Adjusted to prevent text hiding behind the sidebar */
+    padding-top: 80px; /* Adjusted for header height */ 
+    /* height:1000px; */
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: 90vh; /* Adjust based on your layout */
+    overflow-y: auto; /* Allows scrolling */
+    position: relative; /* Ensure position context for accurate scrolling */
+}
+
 
 /* Footer styling */
 footer {
