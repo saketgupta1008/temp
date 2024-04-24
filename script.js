@@ -154,3 +154,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function scrollToBottom() {
+    const mainElement = document.querySelector('main');
+    mainElement.scrollTop = mainElement.scrollHeight;
+}
+
+// Example of adding new content dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    const mainElement = document.querySelector('main');
+
+    
+    // Also auto-scroll on initial page load
+    scrollToBottom();
+});
