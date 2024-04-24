@@ -56,3 +56,81 @@ document.addEventListener('DOMContentLoaded', function() {
     modeToggle.checked = savedMode;
     document.body.classList.toggle('dark-mode', savedMode);
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var searchInput = document.getElementById('searchInput');
+    var textToType = "Type your search query here...";
+    var currentCharIndex = 0;
+    var typingInterval = 200; // Typing speed in milliseconds
+    var typingTimeout;
+
+    // Function to type out the next character
+    function typeCharacter() {
+        if (currentCharIndex < textToType.length) {
+            searchInput.value += textToType.charAt(currentCharIndex);
+            currentCharIndex++;
+            typingTimeout = setTimeout(typeCharacter, typingInterval);
+        }
+    }
+
+    // Function to clear the timeout and the current text if it matches the placeholder text
+    function handleClick() {
+        clearTimeout(typingTimeout);
+        // If the auto-typing isn't finished, we check if the current value matches the typed text
+        if (searchInput.value === textToType.substring(0, currentCharIndex)) {
+            searchInput.value = ''; // Clear the auto-typed text
+        }
+        // Remove the event listener so this only happens once
+        searchInput.removeEventListener('click', handleClick);
+    }
+
+    // Add click event listener to the search input
+    searchInput.addEventListener('click', handleClick);
+
+    // Start typing automatically
+    typeCharacter();
+});
+document.getElementById('toggleSecondaryHeader').addEventListener('click', function() {
+    const secondaryHeader = document.querySelector('.secondary-header');
+    secondaryHeader.classList.toggle('collapsed');
+    this.classList.toggle('active'); // For rotating the arrow with CSS
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchSuggestions = document.getElementById('searchSuggestions');
+
+    searchInput.addEventListener('input', function() {
+        const value = this.value;
+        if (value.length > 1) { // Trigger search when there are 2 or more characters
+            fetch('/search-suggestions/?query=' + encodeURIComponent(value))
+                .then(response => response.json())
+                .then(data => {
+                    searchSuggestions.innerHTML = '';
+                    data.forEach(item => {
+                        const div = document.createElement('div');
+                        div.textContent = item;
+                        div.addEventListener('click', function() {
+                            searchInput.value = this.textContent;
+                            searchSuggestions.style.display = 'none';
+                        });
+                        searchSuggestions.appendChild(div);
+                    });
+                    if (data.length > 0) {
+                        searchSuggestions.style.display = 'block';
+                    } else {
+                        searchSuggestions.style.display = 'none';
+                    }
+                })
+                .catch(error => console.error('Error fetching search suggestions:', error));
+        } else {
+            searchSuggestions.style.display = 'none';
+        }
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!searchBox.contains(event.target)) {
+            searchSuggestions.style.display = 'none';
+        }
+    });
+});

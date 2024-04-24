@@ -11,7 +11,8 @@ body, html {
 :root {
     --main-bg-color: #ecfbff; /* Light mode background */
     --main-text-color: #000000; /* Black text for light mode */
-    --header-footer-bg-color: #ecfbff; /* Light mode header and footer */
+    --header-footer-bg-color: #e0f7fd; /* Light mode header and footer */
+    --header-second-bg-color: #00AFE9;
     --sidebar-bg-color: #ecfbff; /* Light mode sidebar */
     --sidebar-text-color: #000000; /* Black text for sidebar in light mode */
     --button-bg-color: #00AFE9; /* Light mode buttons */
@@ -19,7 +20,18 @@ body, html {
     --button-hover-bg-color: #008CBA; /* Light mode button hover */
     --input-bg-color: #ffffff; /* Light mode input background */
     --input-border-color: #00AFE9; /* Light mode input border */
+    --input-border-focus-color: #008CBA;
     --input-text-color: #000000;
+    --navbar-logo-color: #000000;
+    --help-bg-color: #ecfbff;
+    --navbar-bg-color: #ecfbff;
+    --help-icon-color: #00AFE9;
+
+    --text-color: #000000; /* Black text for light mode */
+    --question-bg-color: #f0f8ff; /* Light blue background for question box */
+    --answer-bg-color: #e0e0e0; /* Light gray background for answer box */
+    --box-shadow-color: rgba(0, 0, 0, 0.1); /* Shadow color for boxes */
+    --body-background-color: #ecfbff;
 }
 
 /* Dark Mode Styles */
@@ -27,40 +39,47 @@ body.dark-mode {
     --main-bg-color: #121212; /* Slightly off-black background for better readability */
     --main-text-color: #ffffff; /* White text for dark mode */
     --header-footer-bg-color: #000000; /* True black for header and footer in dark mode */
+    --header-second-bg-color: #7a8286;
     --sidebar-bg-color: #050505; /* True black for the sidebar in dark mode */
     --button-bg-color: #333333; /* Dark gray for buttons in dark mode */
     --button-text-color: #ffffff; /* White text for buttons in dark mode */
-    --button-hover-bg-color: #000000; /* Slightly lighter gray for button hover in dark mode */
+    --button-hover-bg-color: #272525; /* Slightly lighter gray for button hover in dark mode */
     --input-border-color: #555; /* Dark border for input fields in dark mode */
+    --input-border-focus-color: #121212;
     --input-bg-color: #121212; /* Matching the dark mode background color */
-    --sidebar-text-color: #ffffff;
+    --sidebar-text-color: #b4b4b4;
     --input-text-color: #ffffff;
+    --navbar-logo-color: #ffffff;
+    --navbar-bg-color: #000000;
+    --help-bg-color: #000000;
+    --help-icon-color: #ffffff;
     background-color: var(--main-bg-color); /* Apply the off-dark background */
+
+    --text-color: #ffffff; /* White text for dark mode */
+    --question-bg-color: #333333; /* Darker gray for question box */
+    --answer-bg-color: #424242; /* Medium gray for answer box */
+    --box-shadow-color: rgba(255, 255, 255, 0.1); /* Light shadow for dark mode */
+    --body-background-color: rgba(255, 255, 255, 0.075);
 }
 
 /* Header styling */
-header {
-    display: flex;
-    background-color: var(--header-footer-bg-color);
-    color: white;
-    padding: 15px 20px;
-    position: fixed;
-    width: 100%;
-    height: 70px;
+
+
+#helpButton {
+    background: transparent; /* Ensures no background */
+    border: none; /* No border */
     
-    justify-content: space-between;
-    top: 0;
-    align-items: center;  /* Aligns items vertically in the center */
-    z-index: 1000;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadowing effect */
 }
 
-
+#helpButton:hover {
+    background-color: transparent; /* Keeps background transparent on hover */
+    font-size: 26.25px;
+}
 
 .header-right {
     display: flex;
     gap: 10px;
+    
 }
 
 .header-right button {
@@ -69,11 +88,15 @@ header {
     margin-right: 20px;
     border-radius: 15px; /* Rounded corners for buttons */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: none;
+    background-color: var(--help-bg-color);
+    color: var(--help-icon-color);
+    font-size: 25px;
 }
 .header-left {
     display: flex;
     gap: 30px;
+    
 }
 
 .toggle-container{
@@ -90,6 +113,7 @@ aside {
     top: 70px;
     transition: left 0.3s, background-color 0.3s;
     font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10px;
     box-sizing: border-box;
     overflow: auto;
@@ -130,7 +154,8 @@ footer {
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: flex-end;
+    padding-left: 200px;
+    justify-content: center;
     box-sizing: border-box;
     box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2); /* Upward shadowing effect */
     z-index: 1000; /* Higher than sidebar to keep it visually on top */
@@ -150,16 +175,7 @@ button:hover {
     background-color: var(--button-hover-bg-color);
 }
 
-input[type="text"] {
-    padding: 15px 20px; /* Increased padding for larger height */
-    margin-right: 20px;
-    width: 60%; /* Increased width for the search bar */
-    border: 1px solid var(--input-border-color);
-    background-color: var(--input-bg-color); /* Use the variable for background color */
-    border-radius: 15px; /* Rounded corners for the search bar */
-    transition: border-color 0.3s, padding 0.3s;
-    color: var(--input-text-color);
-}
+
 /* Styling for the toggle switch */
 .switch {
     position: relative;
@@ -182,7 +198,7 @@ input[type="text"] {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #121212;
     transition: .4s;
     border-radius: 22px; /* Adjusted to match new height */
   }
@@ -210,3 +226,329 @@ input[type="text"] {
   input:focus + .slider {
     box-shadow: 0 0 1px #ecfbff;
   }
+#toggleNavbar{
+    background-color: transparent;   
+    color: var(--navbar-logo-color);
+}
+
+#toggleNavbar:hover{
+    font-weight: bold;
+}
+
+#headerLogo {
+    height: 50px; /* Adjust based on your header's size */
+    width: auto; /* Maintains aspect ratio */
+    /*margin-right: 5px; /* Space between logo and next element */
+    vertical-align: middle; /* Aligns vertically if your header uses inline or flexbox layout */
+    padding-left: 50px;
+}
+#staaslogo{
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: #00aeef ;
+    padding: 0px 0px 4px 0px;;
+    text-decoration: none;
+    margin: 5px 0;
+    background-color: transparent;
+    transition: background-color 0.2s;
+    border-radius: 15px; /* Rounded corners for sidebar links */
+}
+
+
+.primary-header {
+    display: flex;
+    background-color: var(--header-footer-bg-color);
+    color: white;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    
+    justify-content: space-between;
+    top: 0;
+    align-items: center;  /* Aligns items vertically in the center */
+    z-index: 1000;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadowing effect */
+}
+
+
+
+/* Secondary Header Styling */
+
+.secondary-header {
+    display: flex;
+    position: fixed;
+    width: 40%;
+    align-items: center; 
+    /* background-color: #074f80; */
+    background-color: var(--header-second-bg-color) ;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 74px;
+    left: 60%;
+    transform: translate(-50%, 0%);
+    border-radius: 15px;
+    justify-content: space-evenly; /* Distribute buttons evenly */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    overflow: hidden;
+    max-height: 60px; /* Adjust based on your content's height */
+    z-index: 999; /* Ensure it is on top but under any absolute elements */
+}
+
+
+.secondary-header.collapsed {
+    max-height: 0;
+    padding: 0 20px; /* Reduce padding when collapsed */
+}
+
+.secondary-header button {
+    background: none;
+    border: none;
+    color: var(--button-text-color);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.secondary-header button:hover {
+    color: var(--button-hover-color);
+}
+
+
+
+.secondary-header button {
+    padding: 5px 15px;
+    border: none;
+    font-family: monospace;
+    font-size: large;
+    color: var(--main-bg-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.secondary-header button:hover {
+    background-color: #ccc;
+}
+.search-box input[type="text"] {
+    padding: 15px 20px; /* Increased padding for larger height */
+    padding-right: 50px;
+    margin-right: 20px;
+    flex-grow: 1; /* Allows the input to take up all available space */
+    width: 90%; /* Increased width for the search bar */
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-bg-color); /* Use the variable for background color */
+    border-radius: 15px; /* Rounded corners for the search bar */
+    transition: box-shadow 0.3s ease;
+    color: var(--input-text-color);
+    
+
+} 
+.search-box input[type="text"]:focus{
+    box-shadow: 0 0 5px var(--input-border-focus-color);
+    border: 1px solid var(--input-border-color);
+    outline-color: var(--input-border-focus-color);
+}
+
+
+   
+.search-box {
+    width: 60%; /* Adjust width as needed */
+    display: flex; /* Establishes a flex container */
+    align-items: center; /* Vertically centers the flex items */
+    border-radius: 15px; /* Rounded corners for the search bar */
+}
+
+
+.search-box .send-icon {
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the icon */
+    color: #ccc; /* Sets the color of the icon */
+    padding-right: 20px;
+    margin-left: -52px;
+}
+
+/* .results-container {
+    margin: 20px;
+    padding: 10px;
+    background-color: var(--main-bg-color); 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.result {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; 
+}
+
+.query {
+    font-weight: bold;
+    color: var(--main-text-color);
+}
+
+.answer {
+    padding-top: 5px;
+    color: var(--main-text-color);
+}
+ */
+
+
+/* Main content adjustments */
+/* Ensure that main covers the appropriate area considering header, footer, and sidebar */
+main {
+    margin-left: 220px; /* Adjusted to prevent text hiding behind the sidebar */
+    padding-top: 80px; /* Adjusted for header height */
+    padding-bottom: 50px; /* Additional padding for footer */
+    min-height: calc(100vh - 130px); /* Adjust based on header and footer height */
+    padding-right: 20px; /* Right padding */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Ensures vertical stacking */
+    align-items: center; /* Centers the containers horizontally */
+}
+
+/* Styling for each query container */
+.query-container {
+    width: 80%; /* Adjust width as needed for your design */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #fff; /* White background for each container */
+}
+
+.question-box, .answer-box {
+    border-radius: 15px; /* Curved borders */
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.question-box {
+    background-color: #f0f8ff; /* Light blue background */
+    height: 50px; /* Fixed height for question box */
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.answer-box {
+    background-color: #e0e0e0; /* Light gray background */
+    min-height: 100px; /* Minimum height for answer box */
+    font-size: 1em;
+}
+/* Light Mode Styles */
+
+
+
+/* Applying the variables */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.query-container {
+    box-shadow: 0px 0px 10px var(--box-shadow-color);
+    background-color: var(--body-background-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.question-box {
+    background-color: var(--question-bg-color);
+    transition: background-color 0.3s;
+}
+
+.answer-box {
+    background-color: var(--answer-bg-color);
+    transition: background-color 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+/* Toggle Button Styling */
+#toggleSecondaryHeader {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--header-second-bg-color);
+    top: 75px; /* Adjust based on primary header height */
+    right: 20px; /* Place it on the right side or adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Adjust size as needed */
+    transition: transform 0.3s ease;
+}
+
+#toggleSecondaryHeader:focus {
+    outline: none;
+}
+#toggleSecondaryHeader.active{
+    transform: rotate(180deg); 
+}
+
+.secondary-header.collapsed + #toggleSecondaryHeader {
+    transform: rotate(180deg); /* Flip the icon when collapsed */
+}
+
+
+
+.circle-icon-link {
+    display: inline-block; /* Ensures the link behaves as an inline element */
+    margin-right: 10px; /* Space between the icon and next button */
+    vertical-align: middle; /* Aligns the icon with buttons */
+}
+
+.circle-icon {
+    height: 40px; /* Set the size of the icon */
+    width: 40px; /* Must match the height to maintain a circle */
+    border-radius: 50%; /* Makes the image circular */
+    display: block; /* Makes the <img> fill the <a> element */
+}
+
+.circle-icon-link:hover .circle-icon {
+    opacity: 0.8; /* Adds a simple hover effect to reduce opacity */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+}
+
+.search-suggestions {
+    display: none; /* Initially hidden */
+    position: absolute;
+    width: calc(100% - 2px); /* Adjust width to match the input */
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* Light border for the dropdown */
+    border-top: none; /* No top border to blend with the input */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.search-suggestions div {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.search-suggestions div:last-child {
+    border-bottom: none;
+}
+
+.search-suggestions div:hover {
+    background-color: #f9f9f9;
+}

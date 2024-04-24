@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interactive Page</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
-    <header>
+    <header class="primary-header">
         <div class="header-left">
         <button id="toggleNavbar">☰</button>
         <div class="toggle-container">
@@ -15,31 +17,92 @@
                 <input type="checkbox" id="modeToggle">
                 <span class="slider round"></span>
             </label>
-        </div>
+        
+        <img src="barclays_logo.png" alt="Your Logo" id="headerLogo">
+        <a href="#" onclick="staas()" id="staaslogo" title="Statistics as a Service">| STaaS</a>
     </div>
+    </div>
+    <button id="toggleSecondaryHeader" aria-label="Toggle Secondary Header"><i class="fas fa-chevron-up"></i></button>
+
         <div class="header-right">
             
             <div class="header-right">
-                <button onclick="logout()">Logout</button>
-                <button onclick="help()">Help</button>
+                <!-- <button onclick="logout()">Logout</button> -->
+                <button onclick="help()" id="helpButton" aria-label="Help"><i class="fas fa-question-circle"></i></button>
             </div>
         </div>
+        
+    </header>
+   
+    <header class="secondary-header">
+        <a href="#" class="circle-icon-link">
+            <img src="edp_ml_logo.jpg" alt="Clickable Icon" class="circle-icon">
+        </a>
+        <button type="button">OCR</button>
+        <button type="button">NLP2Charts</button>
+        <button type="button">Anomaly Detection</button>
+        <button type="button">Recommendation Engine</button>
+        <button type="button">SDG</button>
     </header>
     <aside id="navbar">
         <div class="nav-links">
             <a href="#" onclick="download()">Download</a>
             <a href="#" onclick="reset()">Reset</a>
-            <a href="#" onclick="clearText()">Clear Text</a>
+            <a href="#" onclick="clearText()">Clear Screen</a>
+            <a href="#" onclick="logout()">Logout</a>
         </div>
         
     </aside>
+
+
+
+    <!-- <main>
+        <div class="query-container">
+            <div class="question-box">
+                {{ user_query }}
+            </div>
+            <div class="answer-box">
+                {{ answer }}
+            </div>
+        </div>
+    </main> -->
+    
     <main>
-        
+        <div class="query-container">
+            <div class="question-box">What is the capital of France?</div>
+            <div class="answer-box">The capital of France is Paris.</div>
+        </div>
+        <div class="query-container">
+            <div class="question-box">Who wrote Macbeth?</div>
+            <div class="answer-box">Macbeth was written by William Shakespeare.</div>
+        </div>
+        <div class="query-container">
+            <div class="question-box">What is the chemical formula for water?</div>
+            <div class="answer-box">The chemical formula for water is H2O.</div>
+        </div>
+        <div class="query-container">
+            <div class="question-box">How far is the Moon from Earth?</div>
+            <div class="answer-box">The average distance from the Moon to Earth is about 384,400 kilometers.</div>
+        </div>
+        <div class="query-container">
+            <div class="question-box">What is the largest ocean on Earth?</div>
+            <div class="answer-box">The largest ocean on Earth is the Pacific Ocean.</div>
+        </div>
+        <div class="query-container">
+            <div class="question-box">What is the speed of light?</div>
+            <div class="answer-box">The speed of light in a vacuum is approximately 299,792 kilometers per second.</div>
+        </div>
     </main>
+    
+
+
     <footer>
         
-        <input type="text" placeholder="Search...">
-        <button>Search</button>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Type query here...">
+            <i class="fas fa-arrow-up send-icon"></i>
+            <div id="searchSuggestions" class="search-suggestions"></div>
+        </div>
     </footer>
 <script src="script.js"></script>
 </body>
