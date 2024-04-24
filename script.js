@@ -89,10 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start typing automatically
     typeCharacter();
 });
-document.getElementById('toggleSecondaryHeader').addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const secondaryHeader = document.querySelector('.secondary-header');
-    secondaryHeader.classList.toggle('collapsed');
-    this.classList.toggle('active'); // For rotating the arrow with CSS
+    const toggleButton = document.getElementById('toggleSecondaryHeader');
+
+    // Check if the stored state in localStorage exists and apply it
+    const isCollapsed = localStorage.getItem('secondaryHeaderCollapsed') === 'true';
+    if (isCollapsed) {
+        secondaryHeader.classList.add('collapsed');
+    }
+
+    toggleButton.addEventListener('click', function() {
+        secondaryHeader.classList.toggle('collapsed');
+        // Update the state in localStorage
+        localStorage.setItem('secondaryHeaderCollapsed', secondaryHeader.classList.contains('collapsed'));
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
