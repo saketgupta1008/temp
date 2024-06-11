@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+    <script>
+        function uploadFile(event) {
+            event.preventDefault();
+            var formData = new FormData();
+            var fileInput = document.getElementById('fileInput');
+
+            if (fileInput.files.length > 0) {
+                formData.append('file', fileInput.files[0]);
+
+                fetch('/upload/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        document.getElementById('fileContent').innerText = data.file_content;
+                    } else {
+                        alert('File upload failed');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                alert('No file selected');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload File</h1>
+    <form onsubmit="uploadFile(event)">
+        {% csrf_token %}
+        <input type="file" id="fileInput" name="file"><br><br>
+        <button type="submit">Upload</button>
+    </form>
+    <pre id="fileContent"></pre>
+</body>
+</html>
