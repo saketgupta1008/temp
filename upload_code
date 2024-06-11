@@ -43,3 +43,57 @@
     <pre id="fileContent"></pre>
 </body>
 </html>
+
+
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import os
+
+# Directory to save uploaded files
+UPLOAD_DIR = os.path.join(os.path.dirname(__file__), 'uploads')
+
+# Ensure the upload directory exists
+if not os.path.exists(UPLOAD_DIR):
+    os.makedirs(UPLOAD_DIR)
+
+@csrf_exempt
+def upload_file(request):
+    if request.method == 'POST' and request.FILES.get('file'):
+        uploaded_file = request.FILES['file']
+        file_path = os.path.join(UPLOAD_DIR, uploaded_file.name)
+
+        with open(file_path, 'wb+') as destination:
+            for chunk in uploaded_file.chunks():
+                destination.write(chunk)
+
+        # Read file content
+        with open(file_path, 'r') as file:
+            file_content = file.read()
+
+        return JsonResponse({'status': 'success', 'file_content': file_content})
+
+    return render(request, 'upload.html')
+
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('upload/', views.upload_file, name='upload_file'),
+]
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Add this to your existing settings
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    # Your existing URL patterns
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
