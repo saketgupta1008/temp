@@ -68,6 +68,7 @@ body {
     width: 200px;
 }
 
+
 document.getElementById('id_file').addEventListener('change', function(event) {
     const fileName = event.target.files[0].name;
     document.getElementById('file-name').value = fileName;
