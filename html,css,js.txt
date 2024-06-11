@@ -22,3 +22,35 @@
     <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
+
+$(document).ready(function() {
+    $('#file-input').on('change', function() {
+        const fileName = this.files[0].name;
+        $('#file-name').val(fileName);
+    });
+
+    $('#upload-button').on('click', function(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        const file = $('#file-input')[0].files[0];
+        if (file) {
+            formData.append('file', file);
+
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    $('#message').text(response.message);
+                },
+                error: function(xhr, status, error) {
+                    $('#message').text('File upload failed!');
+                }
+            });
+        } else {
+            $('#message').text('Please select a file first.');
+        }
+    });
+});
