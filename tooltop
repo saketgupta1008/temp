@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Example</title>
+    <style>
+        /* Basic CSS for Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tooltip Example</h2>
+    
+    <!-- Example button with tooltip -->
+    <div class="tooltip">
+        <button>Hover over me</button>
+        <span class="tooltiptext">This is a tooltip text.</span>
+    </div>
+
+</body>
+</html>
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Example</title>
+    <link rel="stylesheet" href="{% static 'css/tooltips.css' %}">
+</head>
+<body>
+    <h2>Tooltip Example</h2>
+    
+    <!-- Example button with tooltip -->
+    <div class="tooltip">
+        <button>Hover over me</button>
+        <span class="tooltiptext">This is a tooltip text.</span>
+    </div>
+
+</body>
+</html>
