@@ -77,3 +77,21 @@ def handle_checkbox_dropdown(request):
         selected_options = request.POST.getlist('options')
         return HttpResponse(f'You selected: {selected_options}')
     return HttpResponse('Invalid request')
+
+
+{% if data %}
+        <h2>Select Options</h2>
+        <form action="{% url 'handle_checkbox_dropdown' %}" method="POST">
+            {% csrf_token %}
+            <div class="dropdown">
+                <button class="dropbtn">Select Options</button>
+                <div class="dropdown-content">
+                    {% for item in data %}
+                        <label><input type="checkbox" name="options" value="{{ item }}"> {{ item }}</label>
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    {% endif %}
