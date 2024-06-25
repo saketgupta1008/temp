@@ -95,3 +95,46 @@ def handle_checkbox_dropdown(request):
             <input type="submit" value="Submit">
         </form>
     {% endif %}
+
+.dropdown {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px; /* Adjust spacing as needed */
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: 200px; /* Adjust width as needed */
+            text-align: left; /* Align text to the left */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px; /* Adjust width as needed */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            overflow-y: auto; /* Enable vertical scroll */
+            max-height: 150px; /* Set maximum height for dropdown */
+            border: 1px solid #ddd; /* Add border for dropdown */
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-content label:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
