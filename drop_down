@@ -52,3 +52,15 @@
     </div>
 </body>
 </html>
+
+<form action="{% url 'handle_dropdown' %}" method="POST">
+        {% csrf_token %}
+        <div class="dropdown">
+            <select name="dropdown" class="dropbtn">
+                {% for item in data %}
+                    <option value="{{ item.value }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
