@@ -71,3 +71,9 @@
             </div>
         </form>
     {% endif %}
+
+def handle_checkbox_dropdown(request):
+    if request.method == 'POST':
+        selected_options = request.POST.getlist('options')
+        return HttpResponse(f'You selected: {selected_options}')
+    return HttpResponse('Invalid request')
