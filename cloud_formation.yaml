@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create a Lambda function with a layer
+
+Resources:
+  # S3 Bucket for storing Lambda function and layer code
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-lambda-bucket
+
+  # Lambda Layer
+  MyLambdaLayer:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: my-layer
+      Description: My custom layer
+      Content:
+        S3Bucket: !Ref S3Bucket
+        S3Key: layer.zip
+      CompatibleRuntimes:
+        - python3.8
+        - nodejs12.x
+
+  # IAM Role for Lambda Function
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: lambda-execution-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: lambda-execution-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+
+  # Lambda Function
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: my-lambda-function
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        S3Bucket: !Ref S3Bucket
+        S3Key: function.zip
+      Runtime: python3.8
+      Layers:
+        - !Ref MyLambdaLayer
+      Timeout: 60
+      MemorySize: 128
+
+Outputs:
+  LambdaFunctionArn:
+    Description: ARN of the Lambda function
+    Value: !GetAtt MyLambdaFunction.Arn
+
+  LambdaLayerArn:
+    Description: ARN of the Lambda layer
+    Value: !Ref MyLambdaLayer
