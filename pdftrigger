@@ -1,0 +1,100 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  # Lambda Function
+  S3ProcessingLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.lambda_handler  # Adjust the handler name as per your code
+      Role: arn:aws:iam::123456789012:role/YourExistingLambdaRole
+      Code:
+        S3Bucket: YourCodeS3BucketName
+        S3Key: path/to/your/lambda-code.zip
+      Runtime: python3.9  # Adjust the runtime as per your code
+      Timeout: 60
+
+  # Permission for S3 to invoke Lambda
+  LambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref S3ProcessingLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub arn:aws:s3:::YourS3BucketName
+
+  # S3 Bucket Notification Configuration
+  S3BucketNotification:
+    Type: Custom::S3BucketNotification
+    DependsOn: LambdaInvokePermission
+    Properties:
+      ServiceToken: !GetAtt S3NotificationLambda.Arn
+      BucketName: YourS3BucketName
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt S3ProcessingLambdaFunction.Arn
+
+  # Lambda function to set S3 bucket notifications (custom resource)
+  S3NotificationLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      Role: arn:aws:iam::123456789012:role/YourExistingLambdaRole
+      Code:
+        ZipFile: |
+          import boto3
+          import cfnresponse
+
+          def handler(event, context):
+              s3 = boto3.client('s3')
+              bucket = event['ResourceProperties']['BucketName']
+              notification = event['ResourceProperties']['NotificationConfiguration']
+              
+              if event['RequestType'] == 'Delete':
+                  s3.put_bucket_notification_configuration(
+                      Bucket=bucket,
+                      NotificationConfiguration={}
+                  )
+              else:
+                  s3.put_bucket_notification_configuration(
+                      Bucket=bucket,
+                      NotificationConfiguration=notification
+                  )
+              
+              cfnresponse.send(event, context, cfnresponse.SUCCESS, {})
+      Runtime: python3.9
+      Timeout: 60
+
+  # IAM Role for the custom resource Lambda function
+  CustomResourceLambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: CustomResourceLambdaPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "arn:aws:logs:*:*:*"
+              - Effect: Allow
+                Action:
+                  - s3:PutBucketNotificationConfiguration
+                  - s3:GetBucketNotificationConfiguration
+                Resource: "arn:aws:s3:::YourS3BucketName"
+
+Outputs:
+  LambdaFunctionArn:
+    Description: "ARN of the Lambda function"
+    Value: !GetAtt S3ProcessingLambdaFunction.Arn
