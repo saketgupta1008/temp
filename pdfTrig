@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  # Lambda Function
+  S3ProcessingLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.lambda_handler  # Adjust the handler name as per your code
+      Role: arn:aws:iam::123456789012:role/YourExistingLambdaRole
+      Code:
+        S3Bucket: YourCodeS3BucketName
+        S3Key: path/to/your/lambda-code.zip
+      Runtime: python3.9  # Adjust the runtime as per your code
+      Timeout: 60
+
+  # S3 Bucket Notification
+  S3BucketNotification:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: YourS3BucketName
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt S3ProcessingLambdaFunction.Arn
+
+  # Permission for S3 to invoke Lambda
+  LambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref S3ProcessingLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub arn:aws:s3:::YourS3BucketName
