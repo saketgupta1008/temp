@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template to set up an EC2 instance for deploying Python packages to an existing S3 bucket.
+
+Parameters:
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+
+  ExistingS3Bucket:
+    Description: Name of the existing S3 bucket
+    Type: String
+
+  ExistingIAMRole:
+    Description: Name of the existing IAM role
+    Type: String
+
+Resources:
+  PythonDeployInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      ImageId: ami-0c55b159cbfafe1f0 # Amazon Linux 2 AMI (region-specific, update as necessary)
+      IamInstanceProfile: !Ref InstanceProfile
+      SecurityGroups: 
+        - !Ref InstanceSecurityGroup
+      UserData: 
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install -y python3 pip
+          pip install boto3
+          aws s3 cp /path/to/your/package.zip s3://${ExistingS3Bucket}/
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: Enable SSH access
+      SecurityGroupIngress: 
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Path: "/"
+      Roles: [ !Ref ExistingIAMRole ]
+
+Outputs:
+  InstanceId:
+    Description: ID of the EC2 instance
+    Value: !Ref PythonDeployInstance
