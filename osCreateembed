@@ -1,0 +1,55 @@
+import requests
+
+host = 'https://your-domain-endpoint'  # OpenSearch domain endpoint
+index_name = 'my_vector_index'
+
+# Index creation payload
+index_body = {
+    'settings': {
+        'index': {
+            'knn': True  # Enable k-NN on this index
+        }
+    },
+    'mappings': {
+        'properties': {
+            'my_vector': {
+                'type': 'knn_vector',
+                'dimension': 128  # Set the dimension of your vectors
+            }
+        }
+    }
+}
+
+# Create the index
+response = requests.put(f"{host}/{index_name}", auth=awsauth, json=index_body)
+print("Index creation response:", response.json())
+
+# Document containing vector data
+document = {
+    'my_vector': [0.1, 0.2, 0.3, ..., 0.128],  # Replace with your actual vector data
+    'other_field': 'some_value'
+}
+
+# Index the document
+response = requests.put(f"{host}/{index_name}/_doc/1", auth=awsauth, json=document)
+print("Document indexing response:", response.json())
+
+# Query vector for k-NN search
+query_vector = [0.1, 0.2, 0.3, ..., 0.128]  # Replace with your actual query vector
+
+# k-NN search query
+query = {
+    "size": 5,  # Number of nearest neighbors to return
+    "query": {
+        "knn": {
+            "my_vector": {
+                "vector": query_vector,
+                "k": 5  # Number of nearest neighbors to find
+            }
+        }
+    }
+}
+
+# Perform the search
+response = requests.post(f"{host}/{index_name}/_search", auth=awsauth, json=query)
+print("k-NN search response:", response.json())
