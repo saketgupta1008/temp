@@ -1,0 +1,37 @@
+Resources:
+  # Define the S3 Bucket
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-trigger-bucket
+
+  # Define the Lambda Function
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties: 
+      FunctionName: my-s3-trigger-lambda
+      Runtime: python3.9  # Modify as needed
+      Handler: index.handler
+      Code:
+        S3Bucket: your-code-bucket
+        S3Key: your-code-key
+      Role: arn:aws:iam::your-account-id:role/your-lambda-execution-role  # Lambda execution role ARN
+
+  # Grant S3 permission to invoke the Lambda function
+  S3InvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref MyLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: s3.amazonaws.com
+      SourceArn: !GetAtt MyS3Bucket.Arn
+
+  # Define S3 bucket notification configuration
+  MyBucketNotification:
+    Type: AWS::S3::BucketNotification
+    Properties:
+      Bucket: !Ref MyS3Bucket
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt MyLambdaFunction.Arn
