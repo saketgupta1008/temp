@@ -22,3 +22,46 @@ To foster an inclusive culture, I acted as a mentor in the Women in ML initiativ
 I designed world-class quality products and services by leading the development of the Confluence Chatbot, a tool that leverages advanced machine learning techniques to provide an efficient and seamless user experience. This solution puts clients at the center by helping them retrieve relevant information quickly and effectively. Using Selenium and Beautiful Soup to scrape data, I ensured that the system could access critical content, while Amazon S3 was utilized to store HTML files securely. By incorporating customized system prompt templates and knowledge bases, I improved the chatbot’s ability to generate precise and contextually relevant responses, enhancing overall client satisfaction.
 In delivering quality outcomes to our clients, I focused on creating flexible and robust solutions. As part of the Comply AI team's requirements, I worked on building a Streamlit UI application to showcase the generative AI capabilities we developed. This user-friendly application made it easier for internal teams to interact with and visualize the data processed by AI models. Additionally, I attempted to deploy the Streamlit application on an EC2 instance, ensuring that the solution could scale and be accessed remotely as per client needs. Although challenges were encountered in the deployment process, it provided valuable insights into enhancing the robustness of the application’s architecture.
 The products and services I delivered are designed to support Barclays' ESG (Environmental, Social, and Corporate Governance) outcomes. By developing tools that enhance data retrieval and conversational AI capabilities, I’ve contributed to more informed decision-making processes for our clients. Additionally, my involvement as a mentor in the Women in ML initiative aligns with our social responsibility goals, promoting diversity and inclusion in the tech industry. These efforts collectively support Barclays' commitment to sustainable and ethical business practices.
+
+
+summary:
+
+In the past year, I have consistently contributed to driving efficiency and innovation within the Generative AI pipeline. A key achievement has been automating manual processes, particularly around data visualization, which has significantly improved the accuracy and speed of data-driven decisions. I implemented robust logic for automated data integrity checks, reducing the need for human intervention and ensuring that the data used in large language models (LLMs) is of the highest quality. This has directly impacted the performance of our AI models and improved business outcomes.
+
+I’ve also leveraged AWS Lambda and CloudFormation to automate the creation and provisioning of vector databases like PGVector, making it easier to manage large datasets while ensuring scalability and consistency across different business units. This automation has been critical for tasks involving LLMs and other data-intensive applications, and it has drastically reduced manual setup time.
+
+One of my major projects, “Statistics as a Service,” is designed to help various business units better interpret and utilize their data. While still in development, this tool will play a critical role in enabling more informed, data-driven decisions across the organization. I’ve ensured that it is built with scalability and long-term value in mind, aligning with the bank’s strategic goals.
+
+Beyond technical contributions, I’ve enhanced our AI systems by improving Named Entity Recognition (NER) models and introducing caching mechanisms to optimize performance and reduce latency. Additionally, I implemented best practices in prompt engineering to improve the consistency and accuracy of AI outputs. I’ve also focused on maintaining high data quality standards through automated monitoring using embeddings and tools like Renumics Spotlight, minimizing the need for manual oversight.
+
+My technical expertise extended to our AWS DeepRacer competition, where I helped our team secure the 1st runner-up position, showcasing my ability to apply optimized strategies to drive results in both technical and competitive environments.
+
+In terms of fostering innovation, I’ve led the adoption of generative AI capabilities across multiple business units, utilizing AWS Bedrock to drive AI projects. Additionally, I’ve been deeply involved in promoting diversity and inclusion within the company, mentoring participants in the Women in ML initiative and organizing team-building activities to foster collaboration and knowledge sharing.
+
+Overall, I have continuously sought to improve processes, deliver reliable solutions, and contribute to Barclays' goals of innovation, operational efficiency, and social responsibility. I am proud of the impact my contributions have had on both the team and the broader organization, and I look forward to continuing to drive meaningful outcomes in the future.
+
+summary 2:
+
+Over the past year, I have taken significant steps to manage risk and strengthen controls, particularly in the development and deployment of AI systems, with a strong focus on security, compliance, and operational efficiency.
+
+One of the key measures I implemented was the use of Virtual Private Clouds (VPCs) and properly defined IAM roles while creating and managing services in AWS Bedrock. By using VPCs, I ensured that our cloud infrastructure is isolated and protected from external threats, thereby reducing the risk of unauthorized access. This network-level security is critical for maintaining a secure environment when dealing with sensitive data and large-scale AI models. Additionally, proper configuration of security groups and network access controls ensured that only the necessary services and resources could communicate with each other, further mitigating security risks.
+
+To strengthen access controls, I defined and enforced least-privilege IAM roles across AWS services. This ensured that each user and service had the minimum necessary permissions to perform their functions, thereby reducing the risk of accidental or malicious misuse of cloud resources. Proper IAM role management was also critical in ensuring compliance with internal and external regulatory requirements, as it provided clear visibility and control over who could access sensitive resources.
+
+In the development of the "Statistics as a Service" tool, I embedded strong encryption techniques for data both at rest and in transit, ensuring compliance with regulatory standards and mitigating risks associated with data breaches. By securing data through encryption and using proper key management, I ensured that even in the event of unauthorized access, sensitive information would remain protected.
+
+Furthermore, I enhanced Named Entity Recognition (NER) models, significantly improving the accuracy of information extraction. This reduced operational risks by ensuring that critical insights were generated accurately, lowering the chances of errors or missed data points, which are crucial when dealing with large datasets in financial applications.
+
+To optimize performance and manage risks related to system inefficiency, I introduced caching mechanisms in large language models (LLMs), which significantly improved response times and data processing capabilities. This not only enhanced the user experience but also mitigated risks associated with slow system performance, especially during peak usage.
+
+Additionally, I implemented automated checks and validations within the Generative AI pipeline to ensure data quality and integrity. By identifying and resolving potential data issues early in the process, I minimized the risk of erroneous outputs from AI models, improving the reliability and trustworthiness of the systems.
+
+Lastly, I incorporated real-time data monitoring using embeddings and tools like Renumics Spotlight, enabling us to proactively detect and address potential data quality issues without manual intervention. This helped in reducing the need for human oversight and improved overall system reliability by maintaining high data standards.
+
+By following best practices in prompt engineering and maintaining strict access controls, I ensured that AI-generated responses were consistent, accurate, and aligned with organizational standards. These efforts have significantly reduced risks, improved compliance, and strengthened controls across all key projects, helping to create secure, efficient, and reliable systems.
+
+
+
+
+
+
