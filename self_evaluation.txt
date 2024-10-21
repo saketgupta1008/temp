@@ -64,7 +64,7 @@ By following best practices in prompt engineering and maintaining strict access 
 Mindset and Values:
 
 Mindset - Challenge:
-I proactively questioned existing processes, identifying opportunities to streamline and automate the management of large datasets in AI projects. Implementing AWS Bedrock and PGVector automation simplified workflows, improving scalability and consistency across business units while reducing manual intervention.
+I fostered a culture of open dialogue by encouraging team members to share their ideas and concerns. By actively seeking diverse perspectives, I challenged conventional thinking and inspired my colleagues to think creatively about solving problems and improving processes. This collaborative approach led to innovative solutions that enhanced our workflows and project outcomes.
 
 Mindset - Drive:
 I took ownership of AI system enhancements by leveraging AWS Lambda and CloudFormation to automate vector database creation, reducing manual setup time. My contributions to the AWS DeepRacer competition further demonstrated my drive to apply optimized strategies to achieve results.
