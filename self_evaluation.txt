@@ -63,28 +63,26 @@ By following best practices in prompt engineering and maintaining strict access 
 
 Mindset and Values:
 
-Mindset - Challenge
-You demonstrate a mindset of constant improvement, evident in your automation of data pipelines to reduce manual intervention. By introducing automated checks and validations, you ensure higher data quality and challenge inefficiencies. Your work on scalable solutions like "Statistics as a Service" reflects your drive to push beyond conventional processes and build long-term impact.
+Mindset - Challenge:
+I proactively questioned existing processes, identifying opportunities to streamline and automate the management of large datasets in AI projects. Implementing AWS Bedrock and PGVector automation simplified workflows, improving scalability and consistency across business units while reducing manual intervention.
 
-Mindset - Drive
-Your relentless pursuit of better outcomes is clear in your optimization of AI systems and automation of vector database management. By implementing caching techniques and real-time data monitoring, you’ve significantly enhanced efficiency. This drive extends to AWS Bedrock innovations, where you reduced manual effort and boosted overall system performance.
+Mindset - Drive:
+I took ownership of AI system enhancements by leveraging AWS Lambda and CloudFormation to automate vector database creation, reducing manual setup time. My contributions to the AWS DeepRacer competition further demonstrated my drive to apply optimized strategies to achieve results.
 
-Mindset - Empower
-You actively foster a collaborative and inclusive environment, particularly through your mentorship in the Women in ML initiative. Your efforts to empower others, combined with organizing team-building activities, have strengthened team dynamics and productivity. This behavior reflects your commitment to developing talent and fostering a supportive work culture.
+Mindset - Empower:
+By automating processes and reducing the need for human intervention, I empowered teams to focus on higher-value tasks. Additionally, mentoring participants in the Women in ML initiative demonstrated my commitment to supporting diverse perspectives and talent growth.
 
-Mindset - Stewardship
-Your focus on security and compliance is evident in the strong encryption techniques and IAM role management across your projects. By automating infrastructure provisioning and securing cloud environments, you’ve enhanced system integrity. Additionally, your alignment with ESG goals demonstrates a commitment to sustainable practices and corporate responsibility.
+Values - Respect:
+I consistently fostered collaboration across different teams and business units by ensuring transparent communication and actively listening to feedback. This approach helped build trust and created a positive environment where everyone’s contributions were valued and respected.
 
-Mindset - Accountability
-You take full ownership of your work, whether it’s developing the Confluence Chatbot or delivering client-focused solutions like Streamlit applications. Your proactive approach in improving system performance and ensuring data integrity showcases your accountability for driving impactful, error-free solutions that meet business needs.
+Values - Integrity:
+I maintained a strong ethical stance in all projects by ensuring transparency in decision-making processes and upholding commitments to stakeholders. By prioritizing honesty and fairness in my interactions, I built trust within my team and reinforced a culture of accountability across our initiatives.
 
-Mindset - Simplify
-You consistently focus on simplifying complex processes, whether through automating AI workflows or building user-friendly interfaces like the Streamlit application. This reflects your ability to break down challenges into manageable parts, streamlining efforts to deliver value efficiently across teams and projects.
+Values - Service:
+I actively sought to understand the needs of my colleagues and stakeholders, providing support and resources to help them achieve their goals. By demonstrating empathy and a commitment to service, I ensured that our efforts were aligned with enhancing the overall experience and success of those we serve.
 
-Mindset - Collaboration
-Collaboration is central to your success, as demonstrated by your work in building team chemistry through socials and team-building activities. You also collaborated across units to deliver impactful products, like the STaaS tool, and contributed to the overall team’s goals through inclusivity and shared success.
+Values - Excellence:
+I consistently set high expectations for myself and my team, inspiring others to strive for their best work. By fostering a culture of continuous improvement and encouraging open feedback, I motivated my colleagues to innovate and push boundaries, ultimately driving our collective success toward achieving exceptional outcomes.
 
-
-
-
-
+Values - Stewardship:
+I took proactive steps to promote sustainability within our projects by advocating for responsible data management practices and resource allocation. By encouraging a mindset of stewardship among my peers, I contributed to a culture that values long-term impact and the ethical use of technology in our operations.
