@@ -67,10 +67,10 @@ Mindset - Challenge:
 I fostered a culture of open dialogue by encouraging team members to share their ideas and concerns. By actively seeking diverse perspectives, I challenged conventional thinking and inspired my colleagues to think creatively about solving problems and improving processes. This collaborative approach led to innovative solutions that enhanced our workflows and project outcomes.
 
 Mindset - Drive:
-I took ownership of AI system enhancements by leveraging AWS Lambda and CloudFormation to automate vector database creation, reducing manual setup time. My contributions to the AWS DeepRacer competition further demonstrated my drive to apply optimized strategies to achieve results.
+I consistently inspired my colleagues by demonstrating a strong work ethic and a positive attitude, even during challenging projects. By being approachable and supportive, I encouraged my team to tackle obstacles head-on and remain focused on our objectives. This collective determination helped us achieve our goals and instilled a shared commitment to excellence.
 
 Mindset - Empower:
-By automating processes and reducing the need for human intervention, I empowered teams to focus on higher-value tasks. Additionally, mentoring participants in the Women in ML initiative demonstrated my commitment to supporting diverse perspectives and talent growth.
+I fostered an environment where team members felt safe to express their thoughts and take risks. By encouraging them to voice their ideas and supporting their decisions, I helped build their confidence and fostered a sense of ownership. This empowerment led to increased engagement and creativity, allowing us to tackle challenges more effectively as a team.
 
 Values - Respect:
 I consistently fostered collaboration across different teams and business units by ensuring transparent communication and actively listening to feedback. This approach helped build trust and created a positive environment where everyone’s contributions were valued and respected.
