@@ -61,6 +61,29 @@ Lastly, I incorporated real-time data monitoring using embeddings and tools like
 By following best practices in prompt engineering and maintaining strict access controls, I ensured that AI-generated responses were consistent, accurate, and aligned with organizational standards. These efforts have significantly reduced risks, improved compliance, and strengthened controls across all key projects, helping to create secure, efficient, and reliable systems.
 
 
+Mindset and Values:
+
+Mindset - Challenge
+You demonstrate a mindset of constant improvement, evident in your automation of data pipelines to reduce manual intervention. By introducing automated checks and validations, you ensure higher data quality and challenge inefficiencies. Your work on scalable solutions like "Statistics as a Service" reflects your drive to push beyond conventional processes and build long-term impact.
+
+Mindset - Drive
+Your relentless pursuit of better outcomes is clear in your optimization of AI systems and automation of vector database management. By implementing caching techniques and real-time data monitoring, you’ve significantly enhanced efficiency. This drive extends to AWS Bedrock innovations, where you reduced manual effort and boosted overall system performance.
+
+Mindset - Empower
+You actively foster a collaborative and inclusive environment, particularly through your mentorship in the Women in ML initiative. Your efforts to empower others, combined with organizing team-building activities, have strengthened team dynamics and productivity. This behavior reflects your commitment to developing talent and fostering a supportive work culture.
+
+Mindset - Stewardship
+Your focus on security and compliance is evident in the strong encryption techniques and IAM role management across your projects. By automating infrastructure provisioning and securing cloud environments, you’ve enhanced system integrity. Additionally, your alignment with ESG goals demonstrates a commitment to sustainable practices and corporate responsibility.
+
+Mindset - Accountability
+You take full ownership of your work, whether it’s developing the Confluence Chatbot or delivering client-focused solutions like Streamlit applications. Your proactive approach in improving system performance and ensuring data integrity showcases your accountability for driving impactful, error-free solutions that meet business needs.
+
+Mindset - Simplify
+You consistently focus on simplifying complex processes, whether through automating AI workflows or building user-friendly interfaces like the Streamlit application. This reflects your ability to break down challenges into manageable parts, streamlining efforts to deliver value efficiently across teams and projects.
+
+Mindset - Collaboration
+Collaboration is central to your success, as demonstrated by your work in building team chemistry through socials and team-building activities. You also collaborated across units to deliver impactful products, like the STaaS tool, and contributed to the overall team’s goals through inclusivity and shared success.
+
 
 
 
