@@ -86,3 +86,11 @@ I consistently set high expectations for myself and my team, inspiring others to
 
 Values - Stewardship:
 I took proactive steps to promote sustainability within our projects by advocating for responsible data management practices and resource allocation. By encouraging a mindset of stewardship among my peers, I contributed to a culture that values long-term impact and the ethical use of technology in our operations.
+
+
+LEAD
+
+Listen and be Authentic: Our leader creates an environment of psychological safety and inclusion. They openly discuss challenges in keeping up with Gen AI advancements, sharing their own learning journey, including mistakes and lessons learned. This authenticity encourages the team to take risks and learn. Monthly one-on-ones are held to provide and receive feedback, demonstrating their openness to improvement and valuing team input.
+Energise and Inspire: The leader excels at communicating complex Gen AI concepts, using clear explanations and real-world examples to make ideas accessible to the entire team. They break down large projects into manageable components, clearly defining each team member's role. By encouraging exploration of new AWS services and Gen AI technologies, they inspire the team to push boundaries and drive innovation. Their approach to minimum component-driven pipelines for AWS showcases their commitment to efficiency and cutting-edge solutions.
+Align across the Enterprise: Our leader consistently aligns our Gen AI projects with Barclays' broader objectives. They bring in stakeholders from other departments to discuss how our work can add value across the enterprise. Their focus on efficient resource management and scalability in AWS pipelines ensures that our team's efforts contribute to sustainable, long-term value for the bank.
+Develop Others: The leader fosters a culture of learning and curiosity by providing each team member with a learning budget and regularly sharing relevant training opportunities. They actively support initiatives like the Women in ML program, promoting diversity and inclusion within the team. A points system tied to project milestones and innovative contributions is used to recognize achievements, which can be redeemed for additional training or conference attendance, further encouraging professional growth.
