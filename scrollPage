@@ -1,0 +1,26 @@
+import streamlit as st
+
+# Custom CSS to make the container scrollable
+st.markdown(
+    """
+    <style>
+    .scrollable-container {
+        height: 300px; /* Adjust the height as needed */
+        overflow-y: scroll;
+        border: 1px solid #ccc; /* Optional: Add border for visibility */
+        padding: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Create a scrollable container
+with st.container():
+    st.markdown('<div class="scrollable-container">', unsafe_allow_html=True)
+
+    # Add content to the scrollable container
+    for i in range(1, 101):
+        st.write(f"Item {i}")
+
+    st.markdown('</div>', unsafe_allow_html=True)
