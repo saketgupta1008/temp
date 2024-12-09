@@ -23,6 +23,22 @@ st.markdown("""
     .chat-message {
         font-size: 16px;
         line-height: 1.6;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 10px;
+        max-width: 80%;
+    }
+    .user-message {
+        background-color: #e6f7ff;
+        border: 1px solid #80c9ff;
+        text-align: right;
+        margin-left: 20%;
+    }
+    .assistant-message {
+        background-color: #f0f0f0;
+        border: 1px solid #d1d1d1;
+        text-align: left;
+        margin-right: 20%;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -48,26 +64,28 @@ with st.sidebar:
     ---
     **Download Chat History**:
     """)
-    
-    # Function to download chat history
-    def download_chat_history(messages, file_format):
+
+    # Function to prepare downloadable chat history
+    def prepare_download(messages, file_format):
         if file_format == "json":
             chat_data = json.dumps(messages, indent=4)
+            mime_type = "application/json"
             file_name = f"chat_history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        else:  # Default to plain text
+        else:  # Plain text format
             chat_data = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in messages])
+            mime_type = "text/plain"
             file_name = f"chat_history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-        return chat_data, file_name
+        return chat_data, file_name, mime_type
 
-    # Download section in sidebar
+    # Select format and trigger download
     file_format = st.selectbox("Select Format", ["text", "json"], key="download_format")
-    if st.button("Download", key="download_button"):
-        chat_data, file_name = download_chat_history(st.session_state.messages, file_format)
+    if st.session_state.messages:  # Ensure there are messages to download
+        chat_data, file_name, mime_type = prepare_download(st.session_state.messages, file_format)
         st.download_button(
-            label="Download Chat",
+            label=f"Download as {file_format.upper()}",
             data=chat_data,
             file_name=file_name,
-            mime="application/json" if file_format == "json" else "text/plain",
+            mime=mime_type,
         )
 
 # Main chat container
@@ -98,8 +116,13 @@ if submitted and user_input:
 # Display chat messages
 with chat_container:
     for i, msg in enumerate(st.session_state.messages):
-        role_style = "text-align: left; color: #2b6777;" if msg["role"] == "assistant" else "text-align: right; color: #4a4a4a;"
-        st.markdown(
-            f"<div class='chat-message' style='{role_style}'><b>{msg['role'].capitalize()}:</b> {msg['content']}</div>",
-            unsafe_allow_html=True,
-        )
+        if msg["role"] == "user":
+            st.markdown(
+                f"<div class='chat-message user-message'><b>User:</b> {msg['content']}</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown(
+                f"<div class='chat-message assistant-message'><b>Assistant:</b> {msg['content']}</div>",
+                unsafe_allow_html=True,
+            )
