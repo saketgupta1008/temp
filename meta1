@@ -1,0 +1,66 @@
+import boto3
+import json
+import io
+from PyPDF2 import PdfReader
+
+# Initialize S3 client
+s3 = boto3.client('s3')
+
+def extract_text_from_pdf(pdf_content):
+    """Extract text from a PDF file."""
+    pdf_reader = PdfReader(io.BytesIO(pdf_content))
+    text = ""
+    for page in pdf_reader.pages:
+        text += page.extract_text()
+    return text
+
+def dummy_function(text):
+    """A dummy function to process the extracted text."""
+    return {"processed_text": text[::-1]}  # Example: reversing the text
+
+def process_pdf_files_in_s3(bucket_name, input_prefix, output_prefix):
+    # List objects in the specified S3 prefix
+    response = s3.list_objects_v2(Bucket=bucket_name, Prefix=input_prefix)
+    
+    if 'Contents' not in response:
+        print("No files found in the specified prefix.")
+        return
+
+    for obj in response['Contents']:
+        file_key = obj['Key']
+
+        # Skip directories and non-PDF files
+        if file_key.endswith('/') or not file_key.lower().endswith('.pdf'):
+            continue
+
+        print(f"Processing file: {file_key}")
+
+        # Read the PDF file from S3
+        file_obj = s3.get_object(Bucket=bucket_name, Key=file_key)
+        pdf_content = file_obj['Body'].read()
+
+        # Extract text from the PDF
+        extracted_text = extract_text_from_pdf(pdf_content)
+
+        # Pass the extracted text to the dummy function
+        processed_data = dummy_function(extracted_text)
+
+        # Generate the output file key
+        output_key = file_key.replace(input_prefix, output_prefix, 1) + '.json'
+
+        # Save the processed result as a JSON file to S3
+        s3.put_object(
+            Bucket=bucket_name,
+            Key=output_key,
+            Body=json.dumps(processed_data, indent=2)
+        )
+
+        print(f"Processed and saved: {output_key}")
+
+# Parameters
+bucket_name = "your-s3-bucket-name"
+input_prefix = "input-prefix/"  # e.g., "pdf-files/"
+output_prefix = "output-prefix/"  # e.g., "processed-json/"
+
+# Call the function
+process_pdf_files_in_s3(bucket_name, input_prefix, output_prefix)
