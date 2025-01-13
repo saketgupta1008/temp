@@ -43,3 +43,43 @@ print(prompt)
 
 prompt = business_metadata["Email_Metadata"].format(input_text="Your email content here")
 print(prompt)
+
+import re
+import json
+
+# Example response text
+response_text = """
+Here is the JSON response for the given social media post:
+json
+{
+    "post_id": "10230584",
+    "content": "Artificial intelligence (AI) is transforming our world! 🧠 AI intelligence, like recognizing images or translating languages. These systems... ",
+    "author": "tech_enthusiast123",
+    "timestamp": "2023-02-28T09:15:30Z",
+    "likes": 534,
+    "comments": 64,
+    "tags": ["ai", "technology", "future"],
+    "platform": "Twitter"
+}
+"""
+
+def extract_json(response_text):
+    # Use regex to find the JSON portion in the response
+    match = re.search(r'\{.*\}', response_text, re.DOTALL)
+    if match:
+        json_str = match.group(0)
+        try:
+            # Parse the JSON string into a Python dictionary
+            json_data = json.loads(json_str)
+            return json_data
+        except json.JSONDecodeError as e:
+            print("Error decoding JSON:", e)
+            return None
+    else:
+        print("No JSON object found in the response.")
+        return None
+
+# Extract and print the JSON object
+json_result = extract_json(response_text)
+print(json_result)
+
