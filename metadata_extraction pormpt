@@ -1,0 +1,45 @@
+business_metadata = {
+    "Social_Media": """
+    Analyze the input social media post and return a strict JSON object.
+
+    Args:
+    text (str): {input_text}
+
+    Returns (strictly JSON format only):
+    json: A JSON object containing the following keys:
+        - "post_id" (str): A unique identifier for the post.
+        - "content" (str): The main content of the post.
+        - "author" (str): The name or handle of the author.
+        - "timestamp" (str): The date and time of the post in ISO 8601 format (e.g., "2025-01-13T14:30:00Z").
+        - "likes" (int): Number of likes the post has received.
+        - "comments" (int): Number of comments the post has received.
+        - "tags" (list): A list of hashtags or topics associated with the post.
+        - "platform" (str): The social media platform where the post was published.
+    """,
+
+    "Email_Metadata": """
+    Analyze the input email content and return a strict JSON object.
+
+    Args:
+    text (str): {input_text}
+
+    Returns (strictly JSON format only):
+    json: A JSON object containing the following keys:
+        - "email_id" (str): A unique identifier for the email.
+        - "sender" (str): The email address or name of the sender.
+        - "receiver" (str): The email address or name of the recipient.
+        - "cc" (list): A list of email addresses in the CC field (if any).
+        - "bcc" (list): A list of email addresses in the BCC field (if any).
+        - "subject" (str): The subject or category/topic of the email.
+        - "timestamp" (str): The date and time the email was sent in ISO 8601 format (e.g., "2025-01-13T14:30:00Z").
+        - "attachments" (list): A list of filenames or file descriptions attached to the email (if any).
+        - "summary" (str): A brief summary or abstract of the email's content.
+        - "elements" (list): A list of key elements or main topics discussed in the email.
+    """
+}
+
+prompt = business_metadata["Social_Media"].format(input_text="Your social media post here")
+print(prompt)
+
+prompt = business_metadata["Email_Metadata"].format(input_text="Your email content here")
+print(prompt)
