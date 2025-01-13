@@ -1,0 +1,52 @@
+import boto3
+import json
+
+# Initialize S3 client
+s3 = boto3.client('s3')
+
+def dummy_function(text):
+    """A dummy function to process text."""
+    # Process the text (e.g., reverse, count words, etc.)
+    return {"processed_text": text[::-1]}
+
+def process_s3_files(bucket_name, input_prefix, output_prefix):
+    # List objects in the specified S3 prefix
+    response = s3.list_objects_v2(Bucket=bucket_name, Prefix=input_prefix)
+    
+    if 'Contents' not in response:
+        print("No files found in the specified prefix.")
+        return
+
+    for obj in response['Contents']:
+        file_key = obj['Key']
+        
+        # Skip directories
+        if file_key.endswith('/'):
+            continue
+
+        # Read file content
+        file_obj = s3.get_object(Bucket=bucket_name, Key=file_key)
+        file_content = file_obj['Body'].read().decode('utf-8')
+
+        # Pass the content to the dummy function
+        processed_data = dummy_function(file_content)
+
+        # Generate output file path
+        output_key = file_key.replace(input_prefix, output_prefix, 1) + '.json'
+
+        # Write processed data back to S3
+        s3.put_object(
+            Bucket=bucket_name,
+            Key=output_key,
+            Body=json.dumps(processed_data, indent=2)
+        )
+
+        print(f"Processed and saved: {output_key}")
+
+# Parameters
+bucket_name = "your-s3-bucket-name"
+input_prefix = "input-prefix/"  # e.g., "raw-files/"
+output_prefix = "output-prefix/"  # e.g., "processed-files/"
+
+# Call the function
+process_s3_files(bucket_name, input_prefix, output_prefix)
