@@ -1,0 +1,94 @@
+def generate_powerbi_prompt(json_data: dict) -> str:
+    prompt = f"""
+    Act as a professional data engineer with expertise in Power BI Tabular Models.
+    You are tasked with converting the given JSON containing entities and relationships 
+    into a Power BI-compatible `.bim` format.
+
+    ### Dataset Information:
+    Below is the dataset containing tables, columns, and relationships:
+
+    ```
+    {json_data}
+    ```
+
+    ### Task:
+    - Analyze the above dataset.
+    - Convert it into a Power BI `.bim` compatible format.
+    - Maintain table relationships, primary keys, and correct data types.
+    - Ensure the generated JSON strictly follows the Power BI Tabular Model schema.
+    - Only return the output in **valid JSON format**.
+
+    ### Expected Output Format:
+    The response should strictly follow this JSON format:
+
+    ```json
+    {{
+      "model": {{
+        "tables": [
+          {{
+            "name": "Sales",
+            "columns": [
+              {{"name": "SalesID", "dataType": "int64"}},
+              {{"name": "Amount", "dataType": "decimal"}},
+              {{"name": "Date", "dataType": "date"}}
+            ]
+          }},
+          {{
+            "name": "Customers",
+            "columns": [
+              {{"name": "CustomerID", "dataType": "int64"}},
+              {{"name": "CustomerName", "dataType": "string"}}
+            ]
+          }}
+        ],
+        "relationships": [
+          {{
+            "fromTable": "Sales",
+            "fromColumn": "SalesID",
+            "toTable": "Customers",
+            "toColumn": "CustomerID",
+            "type": "many-to-one"
+          }}
+        ]
+      }}
+    }}
+    ```
+
+    **Ensure the response strictly adheres to JSON format, as it will be directly parsed.**
+    """
+    return prompt
+
+# Example Usage
+input_json = {
+    "entities": [
+        {
+            "name": "Sales",
+            "columns": [
+                {"name": "SalesID", "type": "int"},
+                {"name": "Amount", "type": "float"},
+                {"name": "Date", "type": "date"}
+            ],
+            "primaryKey": "SalesID"
+        },
+        {
+            "name": "Customers",
+            "columns": [
+                {"name": "CustomerID", "type": "int"},
+                {"name": "CustomerName", "type": "string"}
+            ],
+            "primaryKey": "CustomerID"
+        }
+    ],
+    "relationships": [
+        {
+            "fromTable": "Sales",
+            "fromColumn": "SalesID",
+            "toTable": "Customers",
+            "toColumn": "CustomerID",
+            "relationshipType": "many-to-one"
+        }
+    ]
+}
+
+# Generate and print the prompt
+print(generate_powerbi_prompt(input_json))
