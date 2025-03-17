@@ -1,0 +1,75 @@
+import streamlit as st
+
+# Define queries and responses
+queries = [
+    "SELECT * FROM users WHERE age > 25;",
+    "SELECT name, salary FROM employees WHERE salary > 50000;",
+    "SELECT product_name, price FROM products ORDER BY price DESC LIMIT 5;"
+]
+
+responses = [
+    "| ID | Name  | Age |\n|----|------|-----|\n| 1  | John | 30  |\n| 2  | Anna | 27  |",
+    "| Name   | Salary  |\n|--------|--------|\n| Alice  | 60000  |\n| Bob    | 75000  |",
+    "| Product      | Price |\n|------------|------|\n| Laptop      | 1200 |\n| Smartphone  | 999  |"
+]
+
+# Initialize session state
+if "query_index" not in st.session_state:
+    st.session_state.query_index = 0
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+if "typing_done" not in st.session_state:
+    st.session_state.typing_done = False
+
+# Display chat history
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+# JavaScript for auto-typing effect
+if st.session_state.query_index < len(queries):
+    current_query = queries[st.session_state.query_index]
+
+    js_typing_script = f"""
+    <script>
+        var index = 0;
+        var queryText = "{current_query}";
+        function typeText() {{
+            var inputBox = document.querySelector('textarea[aria-label="Message"]');
+            if (inputBox && index < queryText.length) {{
+                inputBox.value = queryText.substring(0, index + 1);
+                inputBox.dispatchEvent(new Event('input', {{ bubbles: true }})); 
+                index++;
+                setTimeout(typeText, 100);
+            }} else if (inputBox) {{
+                document.querySelector('button').click();  // Auto-submit
+            }}
+        }}
+        document.addEventListener("DOMContentLoaded", function() {{
+            setTimeout(typeText, 500);
+        }});
+    </script>
+    """
+
+    # Chat input for user messages
+    user_input = st.chat_input("Type your message...")
+
+    # Handle input submission
+    if user_input:
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        # Append bot response
+        bot_reply = responses[st.session_state.query_index]
+        st.session_state.messages.append({"role": "assistant", "content": bot_reply})
+
+        # Move to next query
+        st.session_state.query_index += 1
+        st.session_state.typing_done = False
+        st.rerun()
+
+    # Inject JavaScript for typing effect
+    if not st.session_state.typing_done:
+        st.components.v1.html(js_typing_script, height=0)
+        st.session_state.typing_done = True
