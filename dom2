@@ -1,0 +1,43 @@
+import streamlit as st
+
+# Pre-stored queries
+queries = [
+    "What is the weather today?",
+    "How to invest in stocks?",
+    "Tell me a joke."
+]
+
+# JavaScript to detect focus and auto-fill input
+js_code = """
+<script>
+let queries = %s;
+let index = 0;
+
+document.addEventListener("DOMContentLoaded", function() {
+    let inputBox = document.querySelector('textarea');
+
+    if (inputBox) {
+        inputBox.addEventListener('focus', function() {
+            if (index < queries.length) {
+                inputBox.value = queries[index];
+                index++;
+            } else {
+                inputBox.value = "";
+            }
+        });
+    }
+});
+</script>
+""" % queries
+
+st.title("Chat with Pre-filled Queries")
+
+# Chat input (workaround using text area)
+user_input = st.text_area("Type your message here...", key="chat_input")
+
+# Inject JavaScript
+st.components.v1.html(js_code, height=0)
+
+# Display submitted message
+if user_input:
+    st.write("You entered:", user_input)
