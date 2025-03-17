@@ -1,0 +1,21 @@
+import time
+from pynput.mouse import Controller as MouseController, Button
+from pynput.keyboard import Controller as KeyboardController
+
+# Initialize mouse and keyboard controllers
+mouse = MouseController()
+keyboard = KeyboardController()
+
+# Move the mouse to (x, y) position
+mouse.position = (500, 300)  # Change to desired coordinates
+time.sleep(1)  # Wait for 1 second
+
+# Click at the position
+mouse.click(Button.left, 1)
+time.sleep(0.5)  # Wait before typing
+
+# Type a message with delay between characters
+message = "Hello, this is automated typing!"
+for char in message:
+    keyboard.type(char)
+    time.sleep(0.05)  # 50ms delay per character
