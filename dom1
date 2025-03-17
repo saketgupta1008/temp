@@ -1,0 +1,81 @@
+import streamlit as st
+import time
+
+# Define queries and responses
+queries = [
+    "SELECT * FROM users WHERE age > 25;",
+    "SELECT name, salary FROM employees WHERE salary > 50000;",
+    "SELECT product_name, price FROM products ORDER BY price DESC LIMIT 5;"
+]
+
+responses = [
+    "| ID | Name  | Age |\n|----|------|-----|\n| 1  | John | 30  |\n| 2  | Anna | 27  |",
+    "| Name   | Salary  |\n|--------|--------|\n| Alice  | 60000  |\n| Bob    | 75000  |",
+    "| Product      | Price |\n|------------|------|\n| Laptop      | 1200 |\n| Smartphone  | 999  |"
+]
+
+# Initialize session state
+if "query_index" not in st.session_state:
+    st.session_state.query_index = 0  # Track which query is being typed
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []  # Store chat history
+
+if "current_text" not in st.session_state:
+    st.session_state.current_text = ""  # Store the ongoing typed query
+
+if "typing" not in st.session_state:
+    st.session_state.typing = False  # Track whether typing is in progress
+
+
+# Display chat history
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+# Auto-type function
+def auto_type():
+    """Mimics typing by adding one character at a time."""
+    query = queries[st.session_state.query_index]
+    for i in range(len(query) + 1):
+        st.session_state.current_text = query[:i]
+        time.sleep(0.1)  # Adjust typing speed
+        st.rerun()
+
+    # Auto-submit when done
+    st.session_state.typing = False
+    st.session_state.messages.append({"role": "user", "content": query})
+    bot_reply = responses[st.session_state.query_index]
+    st.session_state.messages.append({"role": "assistant", "content": bot_reply})
+
+    # Move to next query
+    st.session_state.query_index += 1
+    st.session_state.current_text = ""
+
+    if st.session_state.query_index < len(queries):
+        st.session_state.typing = True  # Trigger next typing session
+
+    st.rerun()
+
+
+# Start auto-typing when needed
+if st.session_state.query_index < len(queries) and not st.session_state.typing:
+    st.session_state.typing = True
+    auto_type()
+
+
+# Display the chat input field
+user_input = st.chat_input("Type your message...", value=st.session_state.current_text, key="chat_box")
+
+# Handle manual input
+if user_input:
+    st.session_state.messages.append({"role": "user", "content": user_input})
+
+    # Provide bot response
+    bot_reply = responses[st.session_state.query_index]
+    st.session_state.messages.append({"role": "assistant", "content": bot_reply})
+
+    # Move to next query
+    st.session_state.query_index += 1
+    st.session_state.current_text = ""
+    st.rerun()
